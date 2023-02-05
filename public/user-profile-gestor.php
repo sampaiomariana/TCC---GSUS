@@ -63,7 +63,7 @@ include('protect.php');
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-              <a href="/index.html">
+              <a href="/indexgestor.html">
               <i class="icofont-group"></i>
               <span class="brand-name">GSUS</span>
               <i class="icofont-map-pins"></i> 
@@ -79,7 +79,7 @@ include('protect.php');
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>

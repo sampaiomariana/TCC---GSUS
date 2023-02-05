@@ -1,8 +1,10 @@
 <?php
 
 include('connection.php');
-
 $id_medicamento = intval($_GET['id_medicamento']);
+function limpar_texto($str){ 
+  return preg_replace("/[^0-9]/", "", $str); 
+}
 
 if(count($_POST) > 0){
 
@@ -25,7 +27,9 @@ if(count($_POST) > 0){
         WHERE id_medicamento = '$id_medicamento'";
 
         $salvar = $mysqli->query($sql_code) or die($mysqli->error);
+
         if($salvar){
+            
             echo "<p><b>Medicamento atualizado com sucesso!</b></p>";
             unset($_POST);
         } else{
@@ -363,43 +367,36 @@ $medicamento = $query_medicamento->fetch_assoc();
                       </a>
                     </div>
                   </div>
-
-
-  
-            <div class="card-body px-14 pb-14 pt-6">
+                  
+                  <div class="card-body px-14 pb-14 pt-6">
                     <h4 class="text-dark text-center mb-5">Atualizar medicamento</h4>
                     <form method = "POST" action = "">
                       <div class="row">  
                         <div class="form-group col-md-12 mb-4">
-                        <p>
                           <label>Nome</label>
-                          <input name ="nome" value="<?php echo $medicamento['nome']; ?>" name="nome"
-                           type="text"  class="form-control input-lg">
-                        </p>
+                          <input name = "nome" value = "<?php echo $medicamento['nome']?>" type="text" name = "nome" class="form-control input-lg">
                         </div>
-
                         <div class="form-group col-md-12 mb-4">
                           <label>Classificação do medicamento</label>
-                          <input name = "classificacao_medicamento" value = "<?php echo $medicamento['classificacao_medicamento']?>" type="text" name="classificacao_medicamento" id="classificacao_medicamento" class="form-control input-lg">
+                          <input name = "classificacao_medicamento" value = "<?php  echo $medicamento['classificacao_medicamento']?>" type="text" name="classificacao_medicamento" id="classificacao_medicamento" class="form-control input-lg">
                         </div>
                         <div class="form-group col-md-12 ">
                         <label>Informações</label>
-            <input name = "informacoes" value = "<?php echo  $medicamento['informacoes']; ?>" type="text" name=" informacoes" id=" informacoes" class="form-control input-lg" >
+            <input name = "informacoes" value = "<?php echo $medicamento['informacoes']?>" type="text" name="informacoes" class="form-control input-lg" >
                         </div>
                         <div class="form-group col-md-12 ">
                           <label>Preço</label>
-            <input name = "preco"  value = "<?php echo  $medicamento['preco']; ?>" placeholder = "R$: 55,60" type="text" name="preco" id="preco" class="form-control input-lg">
+            <input name = "preco" value = "<?php echo $medicamento['preco']?>"  type="text" name="preco" id="preco" class="form-control input-lg">
                         </div>
                         <div class="form-group col-md-12 mb-4">
                           <label>Quantidade</label>
-                          <input name = "quantidade" value = "<?php echo  $medicamento['quantidade'];?>" type="int" name = "quantidade" class="form-control input-lg" id="quantidade"  placeholder="60">
+                          <input name = "quantidade" value = "<?php echo $medicamento['quantidade']?>" type="int" name = "quantidade" class="form-control input-lg" id="quantidade" >
                         </div>
                         
 
                           <button type="submit" class="btn btn-primary btn-pill mb-6">Atualizar medicamento</button>
 
-                          
-                        </div>
+                         </div>
                       </div>
                     </form>
 

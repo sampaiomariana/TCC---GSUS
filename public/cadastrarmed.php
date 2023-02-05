@@ -1,5 +1,6 @@
 <?php
 
+$id_medicamento = intval($_GET['id_medicamento']);
 if(count($_POST) > 0){
     include('connection.php');
 
@@ -16,10 +17,13 @@ if(count($_POST) > 0){
         $sql_code = "INSERT INTO medicamento (nome, classificacao_medicamento,informacoes, preco, quantidade) 
         VALUES ('$nome', '$classificacao_medicamento', '$informacoes', '$preco', '$quantidade')";
         $salvar = $mysqli->query($sql_code) or die($mysqli->error);
-        if($salvar){
-            echo "<p><b>Medicamento cadastrado com sucesso!</b></p>";
-            unset($_POST);
-        } else{
+        if($salvar) { ?>
+
+        <div class="card-body px-14 pb-14 pt-6">
+        <h4 class="text-dark text-center mb-5">Medicamento cadastrado com sucesso!</h4>
+       </div>
+        <?php
+} else{
             echo "<p><b>Erro ao cadastrar medicamento</b></p>";
         }
     }
@@ -141,14 +145,15 @@ if(count($_POST) > 0){
                                 
                               </a>
                             </li>
-                          
+
+                            
                             <li >
-                              <a class="sidenav-item-link" href="atualizarmed.php">
+                              <a class="sidenav-item-link" href="cadastrarmed.php">
                                 <span class="nav-text">Atualizar medicamento</span>
                                 
                               </a>
                             </li>
-                        
+
                             <li >
                               <a class="sidenav-item-link" href="deletarmed.php">
                                 <span class="nav-text">Apagar medicamento</span>

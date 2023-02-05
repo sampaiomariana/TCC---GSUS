@@ -505,10 +505,10 @@ $num_medicamentos = $query_medicamentos->num_rows;
                 <td><?php echo $medicamentos['preco']; ?></td>
                 <td><?php echo $medicamentos['quantidade']; ?></td>
                 <td>
-                  <a href="atualizarmed.php?id=<?php echo $medicamentos['id_medicamento']; ?>" class="btn btn-info">
+                  <a href="atualizarmed.php?id_medicamento=<?php echo $medicamentos['id_medicamento']; ?>" class="btn btn-info">
                     <i class="mdi mdi-pencil"></i>Atualizar</a>
                   <br>
-                  <a href="deletarmed.php?id=<?php echo $medicamentos['id_medicamento']; ?>" class="btn btn-danger"> <i class="icofont-ui-delete"></i>Exluir</a>
+                  <a href="deletarmed.php?id_medicamento=<?php echo $medicamentos['id_medicamento']; ?>" class="btn btn-danger"> <i class="icofont-ui-delete"></i>Exluir</a>
                 </td>
               </tr>
               <?php

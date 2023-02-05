@@ -1,5 +1,21 @@
 <?php
 include('connection.php');
+
+if (isset($_POST['confirmar'])) {
+  $id_medicamento = intval($_GET['id_medicamento']);
+  $sql_code = "DELETE FROM medicamento WHERE id_medicamento = '$id_medicamento'";
+  $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
+
+  if ($sql_query) { ?>
+
+  <div class="card-body px-14 pb-14 pt-6">
+  <h4 class="text-dark text-left mb-5">Medicamento excluído com sucesso!</h4>
+  <p><a href="estoque.php">Clique aqui para voltar para o estoque de medicamentos.</a></p>
+  </div>
+  <?php
+      die();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -221,57 +237,16 @@ include('connection.php');
                     <ul  class="collapse"  id="other-page"
                       data-parent="#sidebar-menu">
                       <div class="sub-menu">
-                        
-                        
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="invoice.html">
-                                <span class="nav-text">Invoice</span>
-                                
-                              </a>
-                            </li>
-                          
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="404.html">
-                                <span class="nav-text">404 page</span>
-                                
-                              </a>
-                            </li>
-                          
-                        
-
-                        
-                        
-                          
                             <li >
                               <a class="sidenav-item-link" href="page-comingsoon.html">
-                                <span class="nav-text">Coming Soon</span>
+                                <span class="nav-text">Em breve</span>
                                 
                               </a>
                             </li>
-                          
-                        
-
-                        
-                        
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="page-maintenance.html">
-                                <span class="nav-text">Maintenance</span>
-                                
-                              </a>
-                            </li>
-                          
-                        
-
                         
                       </div>
                     </ul>
                   </li>
-                
-
-                
 
                 
                   <li class="section-title">
@@ -345,11 +320,16 @@ include('connection.php');
                 </ul>
               </div>
             </nav>
-
-            
-            
-
           </header>
+          
+          <div class="card-body px-14 pb-14 pt-6">
+                    <h4 class="text-dark text-left mb-5">Tem certeza que desejar deletar este medicamento?</h4>
+          <form method = "POST" action = "">
+            <a href="estoque.php" class="btn btn-primary">Não</a>
+            <button name = "confirmar" value = "1" type="submit" class="btn btn-danger">Sim</button>
+          </form>
+          </div>
+
           <!-- Footer -->
           <footer class="footer mt-auto">
             <div class="copyright bg-white">
