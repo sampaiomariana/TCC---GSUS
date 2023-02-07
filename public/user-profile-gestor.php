@@ -143,6 +143,14 @@ include('protect.php');
                                 
                               </a>
                             </li>
+
+                            <li >
+                              <a class="sidenav-item-link" href="reposicaomed.php">
+                                <span class="nav-text">Reposição Medicamento</span>
+                                
+                              </a>
+                            </li>
+                          
                       
                       </div>
                     </ul>
@@ -252,23 +260,11 @@ include('protect.php');
                           
                             <li >
                               <a class="sidenav-item-link" href="page-comingsoon.html">
-                                <span class="nav-text">Coming Soon</span>
+                                <span class="nav-text">Em breve</span>
                                 
                               </a>
                             </li>
-                          
-                        
-
-                        
-                        
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="page-maintenance.html">
-                                <span class="nav-text">Maintenance</span>
-                                
-                              </a>
-                            </li>
-                          
+                  
                         
 
                         

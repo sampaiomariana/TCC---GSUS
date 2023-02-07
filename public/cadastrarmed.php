@@ -101,7 +101,7 @@ if(count($_POST) > 0){
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>
@@ -164,6 +164,13 @@ if(count($_POST) > 0){
                             <li >
                               <a class="sidenav-item-link" href="estoque.php">
                                 <span class="nav-text">Estoque</span>
+                                
+                              </a>
+                            </li>
+                          
+                            <li >
+                              <a class="sidenav-item-link" href="reposicaomed.php">
+                                <span class="nav-text">Reposição Medicamento</span>
                                 
                               </a>
                             </li>

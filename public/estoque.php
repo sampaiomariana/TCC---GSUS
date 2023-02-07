@@ -77,7 +77,7 @@ $num_medicamentos = $query_medicamentos->num_rows;
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>
@@ -142,6 +142,13 @@ $num_medicamentos = $query_medicamentos->num_rows;
                               </a>
                             </li>
                       
+                            <li >
+                              <a class="sidenav-item-link" href="reposicaomed.php">
+                                <span class="nav-text">Reposição Medicamento</span>
+                                
+                              </a>
+                            </li>
+                          
                       </div>
                     </ul>
                   </li>
@@ -226,47 +233,16 @@ $num_medicamentos = $query_medicamentos->num_rows;
                       data-parent="#sidebar-menu">
                       <div class="sub-menu">
                         
-                        
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="invoice.html">
-                                <span class="nav-text">Invoice</span>
-                                
-                              </a>
-                            </li>
-                          
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="404.html">
-                                <span class="nav-text">404 page</span>
-                                
-                              </a>
-                            </li>
-                          
-                        
-
-                        
+            
                         
                           
                             <li >
                               <a class="sidenav-item-link" href="page-comingsoon.html">
-                                <span class="nav-text">Coming Soon</span>
+                                <span class="nav-text">Em breve</span>
                                 
                               </a>
                             </li>
-                          
-                        
-
-                        
-                        
-                          
-                            <li >
-                              <a class="sidenav-item-link" href="page-maintenance.html">
-                                <span class="nav-text">Maintenance</span>
-                                
-                              </a>
-                            </li>
-                          
+                      
                         
 
                         

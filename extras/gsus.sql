@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Fev-2023 às 05:24
+-- Tempo de geração: 07-Fev-2023 às 05:48
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -167,6 +167,30 @@ CREATE TABLE `postodesaude` (
   `numero` varchar(50) NOT NULL,
   `UF` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `reposicao_medicamento`
+--
+
+CREATE TABLE `reposicao_medicamento` (
+  `id_medicamento` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `classificacao_medicamento` varchar(100) NOT NULL,
+  `informacoes` varchar(100) NOT NULL,
+  `preco` varchar(50) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `id_posto` int(11) NOT NULL,
+  `id_farmacia` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `reposicao_medicamento`
+--
+
+INSERT INTO `reposicao_medicamento` (`id_medicamento`, `nome`, `classificacao_medicamento`, `informacoes`, `preco`, `quantidade`, `id_posto`, `id_farmacia`) VALUES
+(0, 'paracetamol ', '200 mg/mL ', 'solução oral', '54,75', 100, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -336,7 +360,7 @@ ALTER TABLE `gestor`
 -- AUTO_INCREMENT de tabela `medicamento`
 --
 ALTER TABLE `medicamento`
-  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `postodesaude`

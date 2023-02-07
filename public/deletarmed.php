@@ -89,7 +89,7 @@ if (isset($_POST['confirmar'])) {
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>
@@ -153,6 +153,14 @@ if (isset($_POST['confirmar'])) {
                                 
                               </a>
                             </li>
+
+                            <li >
+                              <a class="sidenav-item-link" href="reposicaomed.php">
+                                <span class="nav-text">Reposição Medicamento</span>
+                                
+                              </a>
+                            </li>
+                          
                       
                       </div>
                     </ul>

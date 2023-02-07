@@ -113,7 +113,7 @@ $medicamento = $query_medicamento->fetch_assoc();
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>
@@ -178,6 +178,14 @@ $medicamento = $query_medicamento->fetch_assoc();
                                 
                               </a>
                             </li>
+
+                            <li >
+                              <a class="sidenav-item-link" href="reposicaomed.php">
+                                <span class="nav-text">Reposição Medicamento</span>
+                                
+                              </a>
+                            </li>
+                          
                           
                       
                       </div>

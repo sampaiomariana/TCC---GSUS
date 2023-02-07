@@ -1,7 +1,35 @@
 <?php
-include('connection.php');
-?>
 
+$id_medicamento = intval($_GET['id_medicamento']);
+if(count($_POST) > 0){
+    include('connection.php');
+
+    $erro = false;
+    $nome = $_POST['nome'];
+    $classificacao_medicamento = $_POST['classificacao_medicamento'];
+    $informacoes = $_POST['informacoes'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+ 
+  if($erro){
+        echo "<p><b>ERRO: $erro</b></p>";
+  } else{
+        $sql_code = "INSERT INTO reposicao_medicamento (nome, classificacao_medicamento,informacoes, preco, quantidade) 
+        VALUES ('$nome', '$classificacao_medicamento', '$informacoes', '$preco', '$quantidade')";
+        $salvar = $mysqli->query($sql_code) or die($mysqli->error);
+        if($salvar) { ?>
+
+        <div class="card-body px-14 pb-14 pt-6">
+        <h4 class="text-dark text-center mb-5">Medicamento solicitado com sucesso!</h4>
+       </div>
+        <?php
+} else{
+            echo "<p><b>Erro ao solicitar medicamento</b></p>";
+        }
+    }
+
+}
+?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -82,7 +110,7 @@ include('connection.php');
                   <li class="section-title">
                     Apps
                   </li>
-                
+
                   <li >
                               <a class="sidenav-item-link" href="relatoriomensal.php">
                                 <span class="nav-text">Relatório Mensal</span>
@@ -99,6 +127,7 @@ include('connection.php');
                             </li>
                 
                 
+                
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#email"
                       aria-expanded="false" aria-controls="email">
@@ -109,20 +138,22 @@ include('connection.php');
                       data-parent="#sidebar-menu">
                       <div class="sub-menu">
                   
+
                             <li >
                               <a class="sidenav-item-link" href="cadastrarmed.php">
                                 <span class="nav-text">Cadastrar medicamento</span>
                                 
                               </a>
                             </li>
-                          
+
+                            
                             <li >
-                              <a class="sidenav-item-link" href="atualizarmed.php">
+                              <a class="sidenav-item-link" href="cadastrarmed.php">
                                 <span class="nav-text">Atualizar medicamento</span>
                                 
                               </a>
                             </li>
-                        
+
                             <li >
                               <a class="sidenav-item-link" href="deletarmed.php">
                                 <span class="nav-text">Apagar medicamento</span>
@@ -130,7 +161,6 @@ include('connection.php');
                               </a>
                             </li>
 
-                            
                             <li >
                               <a class="sidenav-item-link" href="estoque.php">
                                 <span class="nav-text">Estoque</span>
@@ -145,6 +175,7 @@ include('connection.php');
                                 
                               </a>
                             </li>
+                          
                       
                       </div>
                     </ul>
@@ -167,7 +198,7 @@ include('connection.php');
                         
                           
                             <li >
-                              <a class="sidenav-item-link" href="user-profile-gestor.php">
+                              <a class="sidenav-item-link" href="user-profile.php">
                                 <span class="nav-text">Perfil do usuário</span>
                                 
                               </a>
@@ -352,316 +383,63 @@ include('connection.php');
                   </li>
                 </ul>
               </div>
-            </nav>
-
-
-          </header>
-
-        <!-- ====================================
-        ——— CONTENT WRAPPER
-        ===================================== -->
-        <div class="content-wrapper">
-          <div class="content">                
-                  <!-- Top Statistics -->
-                  <div class="row">
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-default card-mini">
-                        <div class="card-header">
-                          <h2>$18,699</h2>
-                          <div class="dropdown">
-                            <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-                           </div>
-                          <div class="sub-title">
-                            <span class="mr-1">Sales of this year</span> |
-                            <span class="mx-1">45%</span>
-                            <i class="mdi mdi-arrow-up-bold text-success"></i>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-wrapper">
-                            <div>
-                              <div id="spline-area-1"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-default card-mini">
-                        <div class="card-header">
-                          <h2>$14,500</h2>
-                          <div class="dropdown">
-                            <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-                          </div>
-                          <div class="sub-title">
-                            <span class="mr-1">Expense of this year</span> |
-                            <span class="mx-1">50%</span>
-                            <i class="mdi mdi-arrow-down-bold text-danger"></i>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-wrapper">
-                            <div>
-                              <div id="spline-area-2"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-default card-mini">
-                        <div class="card-header">
-                          <h2>$4199</h2>
-                          <div class="dropdown">
-                            <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-
-                          </div>
-                          <div class="sub-title">
-                            <span class="mr-1">Profit of this year</span> |
-                            <span class="mx-1">20%</span>
-                            <i class="mdi mdi-arrow-down-bold text-danger"></i>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-wrapper">
-                            <div>
-                              <div id="spline-area-3"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                      <div class="card card-default card-mini">
-                        <div class="card-header">
-                          <h2>$20,199</h2>
-                          <div class="dropdown">
-                            <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-
-                            
-                          </div>
-                          <div class="sub-title">
-                            <span class="mr-1">Revenue of this year</span> |
-                            <span class="mx-1">35%</span>
-                            <i class="mdi mdi-arrow-up-bold text-success"></i>
-                          </div>
-                        </div>
-                        <div class="card-body">
-                          <div class="chart-wrapper">
-                            <div>
-                              <div id="spline-area-4"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+            </nav>  
+            </header>
+              <div class="col-lg-12 col-xl-12 col-md-15 ">
+                <div class="card card-default mb-6">
+                  <div class="card-header pb-5">
+                    <div class="app-brand w-100 d-flex justify-content-center border-bottom-6">
+                      
+                      <i class="icofont-group"></i>
+                      <span class="brand-name text-dark">GSUS</span>
+                      <i class="icofont-map-pins"></i>  
+                      </a>
                     </div>
                   </div>
-
-
-              <div class="row">
-                <div class="col-xl">
-                  
-                    <!-- Lista de medicamentos -->
-                    <div class="card card-default">
-                      <div class="card-header align-items-center">
-
-                        <h2 class="">Lista de medicamentos</h2>
+  
+            <div class="card-body px-14 pb-14 pt-6">
+                    <h4 class="text-dark text-center mb-5">Solicitação de reposição do medicamento</h4>
+                    <form method = "POST" action = "">
+                      <div class="row">  
+                        <div class="form-group col-md-12 mb-4">
+                          <label>Nome</label>
+                          <input value = "<?php if(isset($_POST['nome'])) echo $_POST['nome']?>" type="text" name = "nome" class="form-control input-lg" id="nome"  placeholder="Nome">
                         </div>
-                      <div class="card-body">
-                        <div class="tab-content">
-                          <table id="product-sale" class="table table-product " style="width:100%">
-                          <form action="">
-            <div >
-                 <input name="busca" value="<?php if (isset($_GET['busca']))echo $_GET['busca'];?>" placeholder="Digite o medicamento que deseja consultar" class="form-control" type="text">
-                 <button type="submit" class = "btn btn-lg btn-primary">Buscar</button>
-       
-            </div>
-            
-    </form>
-    <br>
-    <table id="productsTable" class="table table-hover table-product" style="width:100%">
-        <tr>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Descrição</th>
-            <th>Classificação</th>
-            <th>Quantidade</th>
-            <th>Posto de Saúde</th>
-        </tr>
-        <?php
-        if(!isset($_GET['busca'])){
-        ?>
-        <tr>
-            <td colspan = "3"> Digite o que deseja pesquisar... </td>
-        </tr>
-        <?php
-        } else {
-            $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-            $sql_code = "SELECT * FROM medicamento 
-                         WHERE nome LIKE '%$_GET[busca]%' 
-                         OR preco LIKE '%$_GET[busca]%'
-                         OR informacoes LIKE '%$_GET[busca]%' 
-                         OR classificacao_medicamento LIKE '%$_GET[busca]%'";
-            $sql_query = $mysqli->query($sql_code) or die("Erro ao realizar a consulta:" . $mysqli->error);
-            }
-        ?>    
-            <?php if ($sql_query->num_rows == 0) { ?> 
-            <tr>
-                <td colspan = "3"> Nenhum medicamento encontrado... </td>
-            </tr>    
-        <?php
-        } else {
-            while ($dado = $sql_query->fetch_assoc()) {
-            ?>
-            <tr class="">
-                   <td><?php echo $dado['nome']; ?></td>
-                   <td><?php echo $dado['preco']; ?></td>
-                   <td><?php echo $dado['informacoes'];?></td>
-                   <td><?php echo $dado['classificacao_medicamento']; ?></td>  
-                   <td><?php echo $dado['quantidade']; ?></td>
-                   <td><?php echo $dado['id_posto'];?></td>
-            </tr>
-            <?php
-            }
-        }
-        ?> 
-                            </thead>
-                          </tbody>
-                          </table>
+                        <div class="form-group col-md-12 mb-4">
+                          <label>Classificação do medicamento</label>
+                          <input  value = "<?php if(isset($_POST['classificacao_medicamento'])) echo $_POST['classificacao_medicamento']?>" type="text" name="classificacao_medicamento" id="classificacao_medicamento" class="form-control input-lg">
+                        </div>
+                        <div class="form-group col-md-12 ">
+                        <label>Informações</label>
+            <input value = "<?php if(isset($_POST[' informacoes'])) echo $_POST['informacoes']?>" type="text" name=" informacoes" id=" informacoes" class="form-control input-lg" >
+                        </div>
+                        <div class="form-group col-md-12 ">
+                          <label>Preço</label>
+            <input value = "<?php if(isset($_POST['preco'])) echo $_POST['preco']?>" placeholder = "R$: 55,60" type="text" name="preco" id="preco" class="form-control input-lg">
+                        </div>
+                        <div class="form-group col-md-12 mb-4">
+                          <label>Quantidade</label>
+                          <input value = "<?php if(isset($_POST['quantidade'])) echo $_POST['quantidade']?>" type="int" name = "quantidade" class="form-control input-lg" id="quantidade"  placeholder="60">
+                        </div>
+                        
+
+                          <button type="submit" class="btn btn-primary btn-pill mb-6">Solicitar Reposição</button>
+
+                          
                         </div>
                       </div>
-                    </div>
+                    </form>
 
-                </div>
-                
-              <!-- Stock Modal -->
-              <div class="modal fade modal-stock" id="modal-stock" aria-labelledby="modal-stock" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-                  <form action="#">
-                    <div class="modal-content">
-                      <div class="modal-header align-items-center p3 p-md-5">
-                        <h2 class="modal-title" id="exampleModalGridTitle">Add Stock</h2>
-                        <div>
-                          <button type="button" class="btn btn-light btn-pill mr-1 mr-md-2" data-dismiss="modal"> cancel </button>
-                          <button type="submit" class="btn btn-primary  btn-pill" data-dismiss="modal"> save </button>
-                        </div>
-
-                      </div>
-                      <div class="modal-body p3 p-md-5">
-                        <div class="row">
-                          <div class="col-lg-8">
-                            <h3 class="h5 mb-5">Product Information</h3>
-                            <div class="form-group mb-5">
-                              <label for="new-product">Product Title</label>
-                              <input type="text" class="form-control" id="new-product" placeholder="Add Product">
-                            </div>
-                            <div class="form-row mb-4">
-                              <div class="col">
-                                <label for="price">Price</label>
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">$</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="price" placeholder="Price" aria-label="Price"
-                                    aria-describedby="basic-addon1">
-                                </div>
-                              </div>
-                              <div class="col">
-                                <label for="sale-price">Sale Price</label>
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">$</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="sale-price" placeholder="Sale Price" aria-label="SalePrice"
-                                    aria-describedby="basic-addon1">
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="product-type mb-3 ">
-                              <label class="d-block" for="sale-price">Product Type <i class="mdi mdi-help-circle-outline"></i> </label>
-                              <div>
-
-                                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="checked">
-                                  <label class="custom-control-label" for="customRadio1">Physical Good</label>
-                                </div>
-
-                                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                  <label class="custom-control-label" for="customRadio2">Digital Good</label>
-                                </div>
-
-                                <div class="custom-control custom-radio d-inline-block mr-3 mb-3">
-                                  <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                                  <label class="custom-control-label" for="customRadio3">Service</label>
-                                </div>
-
-                              </div>
-                            </div>
-
-                            <div class="editor">
-                              <label class="d-block" for="sale-price">Description <i class="mdi mdi-help-circle-outline"></i></label>
-                              <div id="standalone">
-                                <div id="toolbar">
-                                  <span class="ql-formats">
-                                    <select class="ql-font"></select>
-                                    <select class="ql-size"></select>
-                                  </span>
-                                  <span class="ql-formats">
-                                    <button class="ql-bold"></button>
-                                    <button class="ql-italic"></button>
-                                    <button class="ql-underline"></button>
-                                  </span>
-                                  <span class="ql-formats">
-                                    <select class="ql-color"></select>
-                                  </span>
-                                  <span class="ql-formats">
-                                    <button class="ql-blockquote"></button>
-                                  </span>
-                                  <span class="ql-formats">
-                                    <button class="ql-list" value="ordered"></button>
-                                    <button class="ql-list" value="bullet"></button>
-                                    <button class="ql-indent" value="-1"></button>
-                                    <button class="ql-indent" value="+1"></button>
-                                  </span>
-                                  <span class="ql-formats">
-                                    <button class="ql-direction" value="rtl"></button>
-                                    <select class="ql-align"></select>
-                                  </span>
-                                </div>
-                              </div>
-                              <div id="editor"></div>
-
-                              <div class="custom-control custom-checkbox d-inline-block mt-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                <label class="custom-control-label" for="customCheck2">Hide product from published site</label>
-                              </div>
-
-                            </div>
-
-                          </div>
-                          <div class="col-lg-4">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="customFile" placeholder="please imgae here">
-                              <span class="upload-image">Click here to <span class="text-primary">add product image.</span> </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </form>
+                  </div>
                 </div>
               </div>
-</div>
-          
+            </div>
+          </div>
         </div>
-        
+
+            
+          
+
           <!-- Footer -->
           <footer class="footer mt-auto">
             <div class="copyright bg-white">
