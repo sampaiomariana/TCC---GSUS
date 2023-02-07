@@ -43,8 +43,8 @@ if(count($_POST) > 0){
     if($erro){
         echo "<p><b>ERRO: $erro</b></p>";
     } else{
-        $sql_code = "INSERT INTO cidadao (nome, email, data_nascimento, telefone, data_cadastro) 
-        VALUES ('$nome', '$email', '$data_nascimento', '$telefone', NOW())";
+        $sql_code = "INSERT INTO cidadao (nome, email, data_nascimento, telefone, data_cadastro, senha) 
+        VALUES ('$nome', '$email', '$data_nascimento', '$telefone', NOW(), '$senha')";
         $salvar = $mysqli->query($sql_code) or die($mysqli->error);
         if($salvar){
             echo "<p><b>Usuário cadastrado com sucesso!</b></p>";

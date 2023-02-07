@@ -73,7 +73,7 @@ include('connection.php');
                   <li
                    class="active"
                    >
-                    <a class="sidenav-item-link" href="index.php">
+                    <a class="sidenav-item-link" href="indexgestor.php">
                       <i class="mdi mdi-briefcase-account-outline"></i>
                       <span class="nav-text">Dashboard GSUS</span>
                     </a>
